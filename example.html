@@ -1,0 +1,63 @@
+<html>
+<head>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script src="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="flickrUpload.js"></script>
+    <link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-combined.min.css" rel="stylesheet">
+</head>
+<body>
+    <script>
+    $(function() {
+        $('#sheep').hide();
+
+        $( "#button" ).click(function( event ) {
+
+            var sheep_src = $('#sheep').attr('src');
+            var img = new Image();
+            img.crossOrigin = 'anonymous'; 
+            img.src = sheep_src;
+            var binary;
+            img.onload = function() {
+                var canvas = document.getElementById('canvassample');
+                if ( ! canvas || ! canvas.getContext ) {
+                  return false;
+                }
+                var ctx = canvas.getContext('2d');
+                ctx.drawImage(img, 0, 0);
+                var dataURL = canvas.toDataURL();
+                binary = dataURL.replace(/^data:image\/(png|jpg);base64,/, "");
+                binary = atob(binary);
+
+                var upload_url = 'http://api.flickr.com/services/upload';
+                $.getJSON("http://127.0.0.1:3000/flickr/1", function(res){
+
+                    /*
+                    OAUth keys and parameters are obtained from server.
+                    The response JSON would be like this..
+                    var res = {
+                        description: "desc1",
+                        oauth_consumer_key : "xxxxx_your_consumer_key_xxxxx",
+                        oauth_nonce : "77e66489c35f97cc54a3ca20a88149f1efe906da",
+                        oauth_signature : "quWKoqMsaxCRKRB7yAVc8gSv0yU=",
+                        oauth_signature_method : "HMAC-SHA1",
+                        oauth_timestamp : "1364002382",
+                        oauth_token: "xxxx_your_oauth_token_xxxxx",
+                        oauth_version: "1.0",
+                        tags: "tags1",
+                        title: "title1"
+                    };
+                    */
+                    flickrUpload.post(res, upload_url, binary);
+                });
+            }
+
+        });
+    });
+    </script>
+
+    <img id="sheep" src="sheep64.png"></img><br>
+    <canvas id='canvassample' width="64" height="64"></canvas><br>
+    <button id="button" class='btn'>upload</button>
+
+</body>
+</html>
