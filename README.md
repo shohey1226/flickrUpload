@@ -35,21 +35,21 @@ The parameters would be like below.
 These oauth keys should be calculated on server end intead of client(browser) for security concern.
 These parameters can be obtained using API kits under http://www.flickr.com/services/api/.
 
-*You may be able to implement this using http://oauth.googlecode.com/svn/code/javascript/* 
+*If you want to implement OAuth keys, you may be able to use http://oauth.googlecode.com/svn/code/javascript/* 
 
 ## Example
 
     filickrUpload.post(params, 'http://api.flickr.com/services/upload', binary);
 
-* params is the parameters (oauth keys + parameter(title, description,,,) 
+* params is the parameters (oauth keys + parameter(title, description,,,))
 * binary is the binary of the photo you want to upload 
 
 You can take a look at example.html for details. What the example does is as following: 
 
-1 Put image to canvas 
-2 Convert canvas to binary 
-3 Obtain paramters from server 
-4 Post with flickrUpload
+1. Put image to canvas 
+2. Convert canvas to binary 
+3. Obtain paramters from server 
+4. Post with flickrUpload
 
 ## Trouble? 
 
