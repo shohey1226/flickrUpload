@@ -39,7 +39,7 @@ These parameters can be obtained using API kits under http://www.flickr.com/serv
 
 ## Example
 
-    filickrUpload.post(params, 'http://api.flickr.com/services/upload', binary);
+    flickrUpload.post(params, 'http://api.flickr.com/services/upload', binary);
 
 * params is the parameters (oauth keys + parameter(title, description,,,))
 * binary is the binary of the photo you want to upload 
