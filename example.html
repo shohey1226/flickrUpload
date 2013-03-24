@@ -47,7 +47,14 @@
                         title: "title1"
                     };
                     */
-                    flickrUpload.post(res, upload_url, binary);
+                    var photoid = flickrUpload.post(res, upload_url, binary);
+                    //if (photoid === 'error') {
+                    //    // do something
+                    //}else {
+                    //    $.put('http://foobar', {photoid : photoid}, function(res) {
+                    //    });
+                    //}
+
                 });
             }
 

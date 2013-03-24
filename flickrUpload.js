@@ -58,6 +58,14 @@ flickrUpload = (function () {
       request.open("POST",url,false);
       request.setRequestHeader("Content-Type","multipart/form-data;boundary="+boundary1);
       request.sendAsBinary(body);
+      if(request.readyState == 4) {
+        if(request.status == 200 || request.status == 201) {
+          var x=request.responseXML.getElementsByTagName("photoid");
+          return x[0].childNodes[0].nodeValue;
+        } else {
+          return "error";  
+        }
+      }
     }
   };
 })();
