@@ -8,6 +8,14 @@ Implemented OAuth authentication with digesting several Flickr Discussion pages.
 * http://www.flickr.com/services/api/upload.example.html
 * http://www.flickr.com/groups/api/discuss/72157631693117187/
 
+## Browsers
+
+It has been tested on the following browsers
+
+* Firefox 19.0.2
+* Google Chrome 25.0.1364.172
+* Safari 6.0.3 
+
 ## How to use
 
 ### Load this module 
